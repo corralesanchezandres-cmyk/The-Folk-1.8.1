@@ -1,0 +1,47 @@
+name: Build mod
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.1.1
+
+      - name: Buscar proyecto
+        id: find
+        run: |
+          FILE=$(grep -rl "thefolkforge" --include=build.gradle . | head -n 1)
+          if [ -z "$FILE" ]; then
+            echo "No se encontró el build.gradle de thefolkforge en el repositorio."
+            ls -R
+            exit 1
+          fi
+          echo "dir=$(dirname "$FILE")" >> "$GITHUB_OUTPUT"
+
+      - name: Compilar
+        working-directory: ${{ steps.find.outputs.dir }}
+        run: |
+          set +e
+          gradle build --console=plain > build.log 2>&1
+          STATUS=$?
+          echo "=========== ERRORES DE COMPILACION ==========="
+          grep -E -A3 "error:" build.log | head -n 80
+          echo "=============================================="
+          exit $STATUS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thefolkforge-1.75-jar
+          path: ${{ steps.find.outputs.dir }}/build/libs/*.jar
