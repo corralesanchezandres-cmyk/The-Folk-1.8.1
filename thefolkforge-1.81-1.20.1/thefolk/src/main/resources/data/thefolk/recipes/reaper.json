@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "IIA",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "A": { "item": "minecraft:soul_sand" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": { "item": "thefolk:reaper" }
+}

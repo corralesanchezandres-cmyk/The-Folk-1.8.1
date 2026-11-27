@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="thefolk"
+version="1.81"
+displayName="The Folk Forge"
+description='''
+Una entidad de terror tipo dweller con 3 fases que se repiten en ciclo.
+'''
+
+[[dependencies.thefolk]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.thefolk]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"

@@ -1,0 +1,17 @@
+{
+  "whistle": {
+    "sounds": [
+      { "name": "minecraft:block.note_block.flute", "type": "event", "pitch": 1.9, "volume": 1.0 }
+    ]
+  },
+  "voice.behind_es": {
+    "sounds": [
+      { "name": "minecraft:entity.warden.nearby_closest", "type": "event", "pitch": 0.6, "volume": 1.0 }
+    ]
+  },
+  "voice.behind_en": {
+    "sounds": [
+      { "name": "minecraft:entity.warden.nearby_closest", "type": "event", "pitch": 0.6, "volume": 1.0 }
+    ]
+  }
+}
